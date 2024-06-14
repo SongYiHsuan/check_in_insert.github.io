@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
@@ -81,8 +82,6 @@
         padding-left: 12px;
       }
     }
-    
-
   </style>
 
   <link rel="shortcut icon" href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png"/>
@@ -95,7 +94,6 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PGQ9WQT');
   </script>
-
 </head>
 <body>
 
@@ -124,7 +122,7 @@
           </div>
           <!-- 性別 -->
           <div class="input-group">
-            <label>姓別</label>
+            <label>性別</label>
             <div class="radio-group row">
               <!-- 男性 -->
               <div class="four columns">
@@ -148,43 +146,40 @@
   <script>
     $(function() {
       $('#submit').on('click', function() {
-        
         // 姓名
         var name = $('#demo_name').val() || '未填寫';
 
-        //id
+        // ID
         var id = $('#demo_id').val() || '未填寫';
 
         // 性別
         var sex = function() {
           var v;
           $('[name="demo_radio"]').each(function() {
-            if($(this).prop('checked') === true) v = $(this).val();
+            if ($(this).prop('checked') === true) v = $(this).val();
           });
           return v;
         };
 
-
-        // post
+        // 構建資料
         var data = {
           'entry.2026574604': name,
           'entry.731516791': id,
           'entry.959970287': sex(),
         };
+
+        // 送出資料
         $.ajax({
           type: 'POST',
           url: 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2sLvhOJGY1DFRweilnBldzWD3Hjak-nSjI5fczvvUbUA0Tg/formResponse',
           data: data,
-          contentType: 'application/json',
-          dataType: 'jsonp',
+          dataType: 'xml',
           complete: function() {
             alert('資料已送出！');
           }
         });
-        
       });
     });
   </script>
-  
 </body>
 </html>
