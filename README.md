@@ -104,7 +104,7 @@
       <!-- form -->
       <section class="six columns half form">
         <h1>Contact us</h1>
-        <form id="customForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2sLvhOJGY1DFRweilnBldzWD3Hjak-nSjI5fczvvUbUA0Tg/formResponse" method="POST">
+        <form id="customForm">
           <!-- 姓名 -->
           <div class="input-group">
             <label for="demo_name">姓名</label>
@@ -117,7 +117,7 @@
           </div>
           <!-- 性別 -->
           <div class="input-group">
-            <label>姓別</label>
+            <label>性別</label>
             <div class="radio-group row">
               <!-- 男性 -->
               <div class="four columns">
@@ -131,7 +131,7 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="button-primary u-full-width">確認送出</button>
+          <button type="button" id="submit" class="button-primary u-full-width">確認送出</button>
         </form>
       </section>
     </main>
@@ -140,8 +140,23 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
     $(function() {
-      $('#customForm').on('submit', function() {
-        alert('資料已送出！');
+      $('#submit').on('click', function(event) {
+        event.preventDefault(); // 防止默认表单提交
+
+        var form = $('#customForm')[0];
+        var formData = new FormData(form);
+
+        // 使用 fetch API 提交表单数据
+        fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2sLvhOJGY1DFRweilnBldzWD3Hjak-nSjI5fczvvUbUA0Tg/formResponse', {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
+        }).then(function() {
+          alert('資料已送出！');
+          form.reset(); // 重置表单
+        }).catch(function(error) {
+          console.error('Error:', error);
+        });
       });
     });
   </script>
