@@ -163,19 +163,22 @@
 
         // 構建資料
         var data = {
-          'entry.2026574604': name,
-          'entry.731516791': id,
-          'entry.959970287': sex(),
+          'name': name,
+          'id': id,
+          'gender': sex(),
+          'hireDate': new Date().toLocaleDateString('zh-TW') // 假设入职日期为当前日期
         };
 
         // 送出資料
         $.ajax({
           type: 'POST',
-          url: 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2sLvhOJGY1DFRweilnBldzWD3Hjak-nSjI5fczvvUbUA0Tg/formResponse',
+          url: 'YOUR_DEPLOYED_SCRIPT_URL_HERE', // 使用您的 Google Apps Script 部署 URL
           data: data,
-          dataType: 'xml',
-          complete: function() {
+          success: function() {
             alert('資料已送出！');
+          },
+          error: function() {
+            alert('資料送出失敗！');
           }
         });
       });
