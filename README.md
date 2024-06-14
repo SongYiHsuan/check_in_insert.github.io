@@ -108,8 +108,7 @@
   <div class="container">
     <main class="row">
       <!-- bg -->
-      <section class="six columns half bg"></section>
-      
+      <section class="six columns half bg"></section>      
       <!-- form -->
       <section class="six columns half form">
         <h1>Contact us</h1>
@@ -119,7 +118,6 @@
             <label for="demo_name">姓名</label>
             <input class="u-full-width" type="text" placeholder="test@mailbox.com" id="demo_name">
           </div>
-
           <!-- 性別 -->
           <div class="input-group">
             <label>姓別</label>
@@ -129,13 +127,11 @@
                 <input type="radio" id="male" name="demo_radio" value="male" checked>
                 <label for="male">男性</label>
               </div>
-
               <!-- 女性 -->
               <div class="four columns">
                 <input type="radio" id="female" name="demo_radio" value="female">
                 <label for="female">女性</label>
               </div>
-
               <!-- 法人 -->
               <div class="four columns">
                 <input type="radio" id="legal" name="demo_radio" value="legal">
@@ -143,7 +139,6 @@
               </div>
             </div>
           </div>
-
           <!-- 詢問類別 -->
           <div class="input-group">
             <label for="demo_select">詢問類別</label>
@@ -154,15 +149,12 @@
               <option value="bear">熊類</option>
             </select>
           </div>
-
           <!-- 詢問內容 -->
           <div class="input-group">
             <label for="demo_textarea">詢問內容</label>
             <textarea class="u-full-width" id="demo_textarea"></textarea>
           </div>
-
           <button type="button" id="submit" class="button-primary u-full-width">確認送出</button>
-
         </form>
       </section>
     </main>
