@@ -104,16 +104,16 @@
       <!-- form -->
       <section class="six columns half form">
         <h1>Contact us</h1>
-        <form>
+        <form id="customForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2sLvhOJGY1DFRweilnBldzWD3Hjak-nSjI5fczvvUbUA0Tg/formResponse" method="POST">
           <!-- 姓名 -->
           <div class="input-group">
             <label for="demo_name">姓名</label>
-            <input class="u-full-width" type="text" placeholder="" id="demo_name">
+            <input class="u-full-width" type="text" placeholder="" id="demo_name" name="entry.2026574604">
           </div>
           <!-- id -->
           <div class="input-group">
             <label for="demo_id">ID</label>
-            <input class="u-full-width" type="text" placeholder="" id="demo_id">
+            <input class="u-full-width" type="text" placeholder="" id="demo_id" name="entry.731516791">
           </div>
           <!-- 性別 -->
           <div class="input-group">
@@ -121,17 +121,17 @@
             <div class="radio-group row">
               <!-- 男性 -->
               <div class="four columns">
-                <input type="radio" id="male" name="demo_radio" value="male" checked>
+                <input type="radio" id="male" name="entry.959970287" value="male" checked>
                 <label for="male">男性</label>
               </div>
               <!-- 女性 -->
               <div class="four columns">
-                <input type="radio" id="female" name="demo_radio" value="female">
+                <input type="radio" id="female" name="entry.959970287" value="female">
                 <label for="female">女性</label>
               </div>
             </div>
           </div>
-          <button type="button" id="submit" class="button-primary u-full-width">確認送出</button>
+          <button type="submit" class="button-primary u-full-width">確認送出</button>
         </form>
       </section>
     </main>
@@ -140,43 +140,10 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
     $(function() {
-      $('#submit').on('click', function() {
-        
-        // 姓名
-        var name = $('#demo_name').val() || '未填寫';
-
-        //id
-        var id = $('#demo_id').val() || '未填寫';
-
-        // 性別
-        var sex = function() {
-          var v;
-          $('[name="demo_radio"]').each(function() {
-            if($(this).prop('checked') === true) v = $(this).val();
-          });
-          return v;
-        };
-
-        // post
-        var data = {
-          'entry.2026574604': name,
-          'entry.731516791': id,
-          'entry.959970287': sex(),
-        };
-
-        $.ajax({
-          type: 'POST',
-          url: 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2sLvhOJGY1DFRweilnBldzWD3Hjak-nSjI5fczvvUbUA0Tg/formResponse',
-          data: data,
-          contentType: 'application/x-www-form-urlencoded',
-          complete: function() {
-            alert('資料已送出！');
-          }
-        });
-        
+      $('#customForm').on('submit', function() {
+        alert('資料已送出！');
       });
     });
   </script>
-  
 </body>
 </html>
