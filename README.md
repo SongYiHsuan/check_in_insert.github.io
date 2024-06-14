@@ -138,7 +138,6 @@
               </div>
             </div>
           </div>
-
           <button type="button" id="submit" class="button-primary u-full-width">確認送出</button>
         </form>
       </section>
