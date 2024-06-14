@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <link rel="canonical" href="https://www.letswrite.tw/custom-google-form/">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 
   <!-- customized style -->
@@ -27,7 +26,6 @@
     button {
       font-size: 16px;
     }
-
     .half {
       position: fixed;
       margin: 0;
@@ -67,7 +65,6 @@
     textarea {
       min-height: 100px;
     }
-
     @media screen and (max-width: 1024px) {
       .half {
         position: static;
@@ -85,7 +82,6 @@
   </style>
 
   <link rel="shortcut icon" href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png"/>
-
   <!-- Google Tag Manager-->
   <script>
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -96,7 +92,6 @@
   </script>
 </head>
 <body>
-
   <!-- Google Tag Manager (noscript)-->
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGQ9WQT" height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -122,7 +117,7 @@
           </div>
           <!-- 性別 -->
           <div class="input-group">
-            <label>性別</label>
+            <label>姓別</label>
             <div class="radio-group row">
               <!-- 男性 -->
               <div class="four columns">
@@ -146,43 +141,42 @@
   <script>
     $(function() {
       $('#submit').on('click', function() {
+        
         // 姓名
         var name = $('#demo_name').val() || '未填寫';
 
-        // ID
+        //id
         var id = $('#demo_id').val() || '未填寫';
 
         // 性別
         var sex = function() {
           var v;
           $('[name="demo_radio"]').each(function() {
-            if ($(this).prop('checked') === true) v = $(this).val();
+            if($(this).prop('checked') === true) v = $(this).val();
           });
           return v;
         };
 
-        // 構建資料
+        // post
         var data = {
-          'name': name,
-          'id': id,
-          'gender': sex(),
-          'hireDate': new Date().toLocaleDateString('zh-TW') // 假设入职日期为当前日期
+          'entry.2026574604': name,
+          'entry.731516791': id,
+          'entry.959970287': sex(),
         };
 
-        // 送出資料
         $.ajax({
           type: 'POST',
-          url: 'YOUR_DEPLOYED_SCRIPT_URL_HERE', // 使用您的 Google Apps Script 部署 URL
+          url: 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2sLvhOJGY1DFRweilnBldzWD3Hjak-nSjI5fczvvUbUA0Tg/formResponse',
           data: data,
-          success: function() {
+          contentType: 'application/x-www-form-urlencoded',
+          complete: function() {
             alert('資料已送出！');
-          },
-          error: function() {
-            alert('資料送出失敗！');
           }
         });
+        
       });
     });
   </script>
+  
 </body>
 </html>
