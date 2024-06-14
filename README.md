@@ -115,7 +115,12 @@
           <!-- 姓名 -->
           <div class="input-group">
             <label for="demo_name">姓名</label>
-            <input class="u-full-width" type="text" placeholder="test@mailbox.com" id="demo_name">
+            <input class="u-full-width" type="text" placeholder="" id="demo_name">
+          </div>
+          <!-- id -->
+          <div class="input-group">
+            <label for="demo_id">ID</label>
+            <input class="u-full-width" type="text" placeholder="" id="demo_id">
           </div>
           <!-- 性別 -->
           <div class="input-group">
@@ -131,28 +136,9 @@
                 <input type="radio" id="female" name="demo_radio" value="female">
                 <label for="female">女性</label>
               </div>
-              <!-- 法人 -->
-              <div class="four columns">
-                <input type="radio" id="legal" name="demo_radio" value="legal">
-                <label for="legal">法人</label>
-              </div>
             </div>
           </div>
-          <!-- 詢問類別 -->
-          <div class="input-group">
-            <label for="demo_select">詢問類別</label>
-            <select class="u-full-width" id="demo_select">
-              <option value="0" value="0" selected disabled>請選擇</option>
-              <option value="cat">貓類</option>
-              <option value="dog">狗類</option>
-              <option value="bear">熊類</option>
-            </select>
-          </div>
-          <!-- 詢問內容 -->
-          <div class="input-group">
-            <label for="demo_textarea">詢問內容</label>
-            <textarea class="u-full-width" id="demo_textarea"></textarea>
-          </div>
+
           <button type="button" id="submit" class="button-primary u-full-width">確認送出</button>
         </form>
       </section>
@@ -167,6 +153,9 @@
         // 姓名
         var name = $('#demo_name').val() || '未填寫';
 
+        //id
+        var id = $('#demo_id').val() || '未填寫';
+
         // 性別
         var sex = function() {
           var v;
@@ -176,22 +165,16 @@
           return v;
         };
 
-        // 類別
-        var cat = $('#demo_select').val() || '未填寫';
-
-        // 內容
-        var msg = $('#demo_textarea').val() || '未填寫';
 
         // post
         var data = {
-          'entry.248434920': name,
-          'entry.1569038925': sex(),
-          'entry.1509045370': cat,
-          'entry.758411200': msg
+          'entry.2026574604': name,
+          'entry.731516791': id,
+          'entry.959970287': sex(),
         };
         $.ajax({
           type: 'POST',
-          url: 'https://docs.google.com/forms/d/e/1FAIpQLSeTgHEpVpuV_OHakO-25X-O7I4T1tIzIAUqHWLRvUqG9e6TvQ/formResponse',
+          url: 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2sLvhOJGY1DFRweilnBldzWD3Hjak-nSjI5fczvvUbUA0Tg/formResponse',
           data: data,
           contentType: 'application/json',
           dataType: 'jsonp',
