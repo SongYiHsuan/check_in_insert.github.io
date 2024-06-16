@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
@@ -6,16 +7,83 @@
   <link rel="canonical" href="https://www.letswrite.tw/custom-google-form/">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
   <style>
-    /* Your styles here */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    html, body, .container, .row {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .container {
+      max-width: 100%;
+    }
+    button {
+      font-size: 16px;
+    }
+    .half {
+      position: fixed;
+      margin: 0;
+      width: 50% !important;
+      height: 100%;
+    }
+    .bg {
+      background: url('https://fakeimg.pl/1920x1024/?text=KV') center center;
+      background-size: cover;
+    }
+    .form {
+      left: 50%;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    h1, form {
+      width: 100%;
+    }
+    h1 {
+      padding-top: 16px;
+      text-align: center;
+    }
+    form {
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 400px;
+    }
+    .input-group {
+      margin-bottom: 30px;
+    }
+    .radio-group label {
+      display: inline-block;
+    }
+    textarea {
+      min-height: 100px;
+    }
+    @media screen and (max-width: 1024px) {
+      .half {
+        position: static;
+        width: 100% !important;
+        height: auto;
+      }
+      .bg {
+        height: 30vh;
+      }
+      form {
+        padding-right: 12px;
+        padding-left: 12px;
+      }
+    }
   </style>
-  <link rel="shortcut icon" href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png"/>
 </head>
 <body>
   <div class="container">
     <main class="row">
       <section class="six columns half bg"></section>
       <section class="six columns half form">
-        <h1>Contact us</h1>
+        <h1>新增員工資料</h1>
         <form id="customForm">
           <div class="input-group">
             <label for="demo_name">姓名</label>
@@ -38,6 +106,10 @@
               </div>
             </div>
           </div>
+          <div class="input-group">
+            <label for="demo_date">入職日期</label>
+            <input class="u-full-width" type="date" id="demo_date" name="entry.123456789" required>
+          </div>
           <button type="button" id="submit" class="button-primary u-full-width">確認送出</button>
         </form>
       </section>
@@ -47,7 +119,7 @@
   <script>
     $(function() {
       $('#submit').on('click', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // 防止默认表单提交
         var form = $('#customForm')[0];
         var formData = new FormData(form);
         fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2sLvhOJGY1DFRweilnBldzWD3Hjak-nSjI5fczvvUbUA0Tg/formResponse', {
@@ -56,7 +128,7 @@
           mode: 'no-cors'
         }).then(function() {
           alert('資料已送出！');
-          form.reset();
+          form.reset(); // 重置表单
         }).catch(function(error) {
           console.error('Error:', error);
         });
