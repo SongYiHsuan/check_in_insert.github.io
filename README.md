@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
@@ -108,7 +107,7 @@
           </div>
           <div class="input-group">
             <label for="demo_date">入職日期</label>
-            <input class="u-full-width" type="date" id="demo_date" name="entry.123456789" required>
+            <input class="u-full-width" type="date" id="demo_date" name="entry.925520126" required>
           </div>
           <button type="button" id="submit" class="button-primary u-full-width">確認送出</button>
         </form>
@@ -119,16 +118,23 @@
   <script>
     $(function() {
       $('#submit').on('click', function(event) {
-        event.preventDefault(); // 防止默认表单提交
+        event.preventDefault();
         var form = $('#customForm')[0];
         var formData = new FormData(form);
+        var formParams = new URLSearchParams();
+        formData.forEach((value, key) => {
+          formParams.append(key, value);
+        });
         fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2sLvhOJGY1DFRweilnBldzWD3Hjak-nSjI5fczvvUbUA0Tg/formResponse', {
           method: 'POST',
-          body: formData,
+          body: formParams,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
           mode: 'no-cors'
         }).then(function() {
           alert('資料已送出！');
-          form.reset(); // 重置表单
+          form.reset();
         }).catch(function(error) {
           console.error('Error:', error);
         });
