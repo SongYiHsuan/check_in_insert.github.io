@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
@@ -64,7 +65,7 @@
     @media screen and (max-width: 1024px) {
       .half {
         position: static;
-        width: 100% !important;
+        width: 100% !重要;
         height: auto;
       }
       .bg {
@@ -127,7 +128,7 @@
         });
         fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2sLvhOJGY1DFRweilnBldzWD3Hjak-nSjI5fczvvUbUA0Tg/formResponse', {
           method: 'POST',
-          body: formParams,
+          body: formParams.toString(),
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
