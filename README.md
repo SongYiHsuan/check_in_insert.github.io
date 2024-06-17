@@ -65,7 +65,7 @@
     @media screen and (max-width: 1024px) {
       .half {
         position: static;
-        width: 100% !重要;
+        width: 100% !important;
         height: auto;
       }
       .bg {
